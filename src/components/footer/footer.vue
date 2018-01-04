@@ -4,10 +4,32 @@
     <router-view />
 
     <ul class="footernav_ul">
-      <li @click="changePage(0)"><router-link to="/homePage"><i class="icon1"></i></router-link></li>
-      <li @click="changePage(1)"><router-link to="/classify"><i class="icon2"></i></router-link></li>
-      <li @click="changePage(2)"><router-link to="/shopCart"><i class="icon3"></i></router-link></li>
-      <li @click="changePage(3)"><router-link to="/mine"><i class="icon4"></i></router-link></li>
+      <li v-if="$route.path.indexOf('homePage') !== -1" @click="changePage('/homePage')">
+        <router-link to="/homePage"><i class="icon1"></i></router-link>
+      </li>
+      <li v-else>
+        <router-link to="/homePage"><i class="icon11"></i></router-link>
+      </li>
+
+      <li v-if="$route.path.indexOf('classify') !== -1" @click="changePage('/classify')">
+        <router-link to="/classify"><i class="icon2"></i></router-link>
+      </li>
+      <li v-else>
+        <router-link to="/classify"><i class="icon22"></i></router-link>
+      </li>
+
+      <li v-if="$route.path.indexOf('shopCart') !== -1" @click="changePage('/shopCart')">
+        <router-link to="/shopCart"><i class="icon3"></i></router-link>
+      </li>
+      <li v-else>
+        <router-link to="/shopCart"><i class="icon33"></i></router-link>
+      </li>
+      <li v-if="$route.path.indexOf('mine') !== -1" @click="changePage('/mine')">
+        <router-link to="/mine"><i class="icon4"></i></router-link>
+      </li>
+      <li v-else>
+        <router-link to="/mine"><i class="icon44"></i></router-link>
+      </li>
     </ul>
 
   </div>
@@ -17,14 +39,14 @@
     props: [],
     data () {
       return {
-        
+        icons:[
+          {icon1:"background-position 0px 0px"}
+        ]
       }
     },
     methods: {
-      changePage (num){
-        if (num == 0){
-
-        }
+      changePage (path){
+       this.$router.replace(path)
       }
     },
     computed: {},
@@ -60,25 +82,53 @@
             height: 40px;
             background-position 0px 0px
             background-size 230px 160px
-          &>.icon2
+          &>.icon11
+            display: inline-block;
+            vertical-align: middle;
+            width: 42px;
+            height: 40px;
+            background-position -84px 0px
+            background-size 230px 160px
+          &>.icon22
             display: inline-block;
             vertical-align: middle;
             width: 42px;
             height: 40px;
             background-position -82px -40px
             background-size 230px 160px
-          &>.icon3
+          &>.icon2
+            display: inline-block;
+            vertical-align: middle;
+            width: 42px;
+            height: 40px;
+            background-position 2px -40px
+            background-size 230px 160px
+          &>.icon33
             display: inline-block;
             vertical-align: middle;
             width: 42px;
             height: 40px;
             background-position -82px -80px
             background-size 230px 160px
-          &>.icon4
+          &>.icon3
+            display: inline-block;
+            vertical-align: middle;
+            width: 42px;
+            height: 40px;
+            background-position 2px -80px
+            background-size 230px 160px
+          &>.icon44
             display: inline-block;
             vertical-align: middle;
             width: 42px;
             height: 40px;
             background-position -84px -120px
+            background-size 230px 160px
+          &>.icon4
+            display: inline-block;
+            vertical-align: middle;
+            width: 42px;
+            height: 40px;
+            background-position 0px -120px
             background-size 230px 160px
 </style>
