@@ -72,7 +72,7 @@
           display block
           line-height 45px
           &>i
-            background-image url("../../assets/img/img.png")
+            background-image url("../../assets/imgs/img.png")
             background-repeat no-repeat
             background-size 42px 40px
           &>.icon1
