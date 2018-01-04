@@ -1,36 +1,84 @@
 <template>
-  <div>
-    <h3>footer 组件 。。。</h3>
+  <div class="footernav">
 
     <router-view />
 
-    <router-link to="/homePage">首页</router-link>
-    <router-link to="/classify">分类</router-link>
-    <router-link to="/shopCart">购物车</router-link>
-    <router-link to="/mine">我的E宠</router-link>
+    <ul class="footernav_ul">
+      <li @click="changePage(0)"><router-link to="/homePage"><i class="icon1"></i></router-link></li>
+      <li @click="changePage(1)"><router-link to="/classify"><i class="icon2"></i></router-link></li>
+      <li @click="changePage(2)"><router-link to="/shopCart"><i class="icon3"></i></router-link></li>
+      <li @click="changePage(3)"><router-link to="/mine"><i class="icon4"></i></router-link></li>
+    </ul>
 
   </div>
 </template>
 <script>
-  import homePage from "../../pages/homePage/homePage.vue"
-  import classify from "../../pages/classify/classify.vue"
-  import shopCart from "../../pages/shopCart/shopCart.vue"
-  import mine from "../../pages/mine/mine.vue"
   export default{
     props: [],
     data () {
-      return {}
+      return {
+        
+      }
     },
-    methods: {},
+    methods: {
+      changePage (num){
+        if (num == 0){
+
+        }
+      }
+    },
     computed: {},
-    /*components:{
-      homePage,
-      classify,
-      shopCart,
-      mine
-    }*/
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-
+  .footernav
+    .footernav_ul
+      height: 45px;
+      line-height: 45px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-top: 1px solid #e7e7e7;
+      &>li
+        width 25%
+        height 100%
+        float left
+        font-size 12px
+        text-align center
+        & a
+          display block
+          line-height 45px
+          &>i
+            background-image url("../../assets/img/img.png")
+            background-repeat no-repeat
+            background-size 42px 40px
+          &>.icon1
+            display: inline-block;
+            vertical-align: middle;
+            width: 42px;
+            height: 40px;
+            background-position 0px 0px
+            background-size 230px 160px
+          &>.icon2
+            display: inline-block;
+            vertical-align: middle;
+            width: 42px;
+            height: 40px;
+            background-position -82px -40px
+            background-size 230px 160px
+          &>.icon3
+            display: inline-block;
+            vertical-align: middle;
+            width: 42px;
+            height: 40px;
+            background-position -82px -80px
+            background-size 230px 160px
+          &>.icon4
+            display: inline-block;
+            vertical-align: middle;
+            width: 42px;
+            height: 40px;
+            background-position -84px -120px
+            background-size 230px 160px
 </style>

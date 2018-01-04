@@ -32,7 +32,7 @@ export default new VueRouter({
       path:"/shopCart",
       component: shopCart
     },
-    // 我的 页
+    // 我的
     {
       path:"/mine",
       component: mine
