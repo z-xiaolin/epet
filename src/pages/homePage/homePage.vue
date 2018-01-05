@@ -33,7 +33,8 @@
       </div>
     </div>
 
-    <div class="contentWrap" :style="{height:height}">
+    <!--<div class="contentWrap" :style="{height:height}">-->
+    <div class="contentWrap" :style="{top: top}">
       <div class="content">
         <carousel />
         <div class="homeContentWrap">
@@ -55,56 +56,224 @@
           <img src="./imgs/new_exclusive.gif" alt="">
         </div>
         <div class="daily_berserk">
-      <div class="daily_title">
-        <img src="" alt="">
-        <span>距离下一场</span>
-        <div class="time">
-          <span></span><span>:</span><span></span>
-          <span>:</span><span></span>
+          <div class="daily_title">
+            <div class="tp">
+              <img src="./imgs/suprice.png">
+            </div>
+            <div class="next">距离下一场&nbsp;</div>
+            <div class="time">
+              <span>{{time()[0]}}</span>
+              <span>:</span>
+              <span>{{time()[1]}}</span>
+              <span>:</span>
+              <span>{{time()[2]}}</span>
+            </div>
+            <div class="more">
+              <a href="###">
+                <img src="./imgs/more.png">
+              </a>
+            </div>
+          </div>
+          <div class="food_list">
+            <ul class="list">
+              <li>
+                <img src="./imgs/hour2_1.jpg">
+                <div>
+                  <span>￥</span><span>1.25</span>
+                  <p>省￥11.25</p>
+                </div>
+              </li>
+              <li>
+                <img src="./imgs/hour2_2.jpg">
+                <div>
+                  <span>￥</span><span>2.20</span>
+                  <p>省￥11.25</p>
+                </div>
+              </li>
+              <li>
+                <img src="./imgs/hour2_3.jpg">
+                <div>
+                  <span>￥</span><span>1.25</span>
+                  <p>省￥11.25</p>
+                </div>
+              </li>
+              <li>
+                <img src="./imgs/hour2_4.jpg">
+                <div>
+                  <span>￥</span><span>2.25</span>
+                  <p>省￥11.25</p>
+                </div>
+              </li>
+              <li>
+                <img src="./imgs/hour2_5.jpg">
+                <div>
+                  <span>￥</span><span>15.20</span>
+                  <p>省￥11.25</p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-        <img src="./imgs/more.png">
-      </div>
-    </div>
-
+        <split />
+        <div class="e_chong">
+          <img src="./imgs/e_chong.jpg">
+        </div>
+        <split />
+        <div class="e_guoji">
+          <div><img src="./imgs/e_guoji_1.jpg"></div>
+          <p><img src="./imgs/e_guoji_2.jpg"></p>
+          <p><img src="./imgs/e_guoji_3.jpg"></p>
+        </div>
+        <split />
+        <smallVideo />
+        <!--<smallVideo :title_src="../../pages/homePage/imgs/e_video_small.jpg"
+                    :title_more_src="../../pages/homePage/imgs/more2.jpg"
+                    :video_img_src="../../pages/homePage/imgs/e_video.jpg"
+                    :text="PETSTAGES&nbsp;草皮镜面轨道球&nbsp;释放爱玩天性"
+                    :num="23291" :time="01:36"/>-->
+        <split />
+        <div class="e_brand">
+          <div class="brand_title">
+            <img src="./imgs/brand_sell.jpg" alt="">
+            <a href=""><img src="./imgs/more2.jpg" alt=""></a>
+          </div>
+          <div class="brand_imgs">
+            <ul class="img_list">
+              <li><img src="./imgs/p_1.jpg" alt=""><split /></li>
+              <li><img src="./imgs/p_2.jpg" alt=""><split /></li>
+              <li><img src="./imgs/p_3.jpg" alt=""></li>
+            </ul>
+          </div>
+        </div>
+        <split />
+        <div class="e_exp">
+          <div class="e_exp_title">
+            <img src="./imgs/exp.jpg" alt="">
+            <a href=""><img src="./imgs/more2.jpg" alt=""></a>
+          </div>
+          <carousel />
+        </div>
+        <split />
+        <!--<smallVideo />-->
+        <div class="e_video">
+          <div class="video_title">
+            <img src="../../pages/homePage/imgs/lovely_pet.jpg" alt="">
+            <a href=""><img src="../../pages/homePage/imgs/more2.jpg" alt=""></a>
+          </div>
+          <div class="video_img">
+            <img src="../../pages/homePage/imgs/pet_img.jpg" alt="">
+            <span class="play"></span>
+          </div>
+          <div class="foo_text">
+            <p class="text1">第2期-猫啪啪啪的时候爽吗？</p>
+            <p class="text2">
+              <span class="icon"></span>
+              <span>27819</span>
+              <span> | </span>
+              <span>02:36</span>
+            </p>
+          </div>
+        </div>
+        <split />
+        <div class="e_video">
+          <div class="video_title">
+            <img src="../../pages/homePage/imgs/theatre.jpg" alt="">
+            <a href=""><img src="../../pages/homePage/imgs/more2.jpg" alt=""></a>
+          </div>
+          <div class="video_img">
+            <img src="../../pages/homePage/imgs/theatre_img.png" alt="">
+            <span class="play"></span>
+          </div>
+          <div class="foo_text">
+            <p class="text1">E宠内部禁播视频——设计师篇</p>
+            <p class="text2">
+              <span class="icon"></span>
+              <span>8863</span>
+              <span> | </span>
+              <span>00:36</span>
+            </p>
+          </div>
+        </div>
+        <split />
+        <div class="textDiv">
+          <img src="./imgs/text_img.jpg" alt="">
+        </div>
+        <split />
+        <div class="home_footer">
+          <div class="other">
+            <span>触屏版</span>
+            <span><a href="##">手机客户端</a></span>
+            <span><a href="##">关于我们</a></span>
+            <span><a href="##">联系我们</a></span>
+          </div>
+          <div class="copy">© wap.epet.com 版权：重庆易宠科技有限公司</div>
+        </div>
       </div>
     </div>
   </div>
+
 </template>
 <script>
   import BScroll from "better-scroll"
   import carousel from "../../components/carousel/carousel.vue"
   import split from "../../components/split/split.vue"
+  import smallVideo from "../../components/small_video/smallVideo.vue"
+  import {showtime} from "../../uitls/countdown"
   export default{
     props: [],
     data () {
       return {
         isShow:true,
-        height:"478px"
+//        height:"478px"
+        top:"142px",
       }
     },
     mounted (){
       let scrollX = new BScroll(".header_nav", {scrollX: true, click: true})
+      let scrollX2 = new BScroll(".food_list", {scrollX: true, click: true})
       let scrollY = new BScroll(".contentWrap",{scrollY: true, click: true})
     },
     methods: {
       closebtn (){
         this.isShow = !this.isShow
-        let Height = document.documentElement.clientHeight
-        this.height = (Height-87-46)+ "px"
+//        let Height = document.documentElement.clientHeight
+//        this.height = (Height-87-46)+ "px"
+        this.top = "87px"
+      },
+      time(){
+        return showtime()
+        /*let showtime = function() {
+          let time = []
+          let nowtime = new Date(),
+            endtime = new Date("2018/1/5,21:30:00"),//设置结束时间
+            lefttime = parseInt((endtime.getTime()-nowtime.getTime())/1000),
+            d = Math.floor(lefttime/(60*60*24)),
+            h = Math.floor(lefttime/(60*60)%24),
+            m = Math.floor(lefttime/60%60),
+            s = Math.floor(lefttime%60);
+          time.push(h, m, s)
+          // console.log(h, m, s)
+          // console.log(time)
+//        p3.innerHTML=d+"天"+h+"小时"+m+"分"+s+"秒";
+          setTimeout(showtime, 1000);
+          return time
+        }
+        showtime()*/
       }
     },
     computed: {},
     components:{
       carousel,
       split,
+      smallVideo,
     }
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-  /*body,html{
+  body,html{
     height 100%
     overflow hidden
-  }*/
+  }
   .headerWrap
     .overflow
       width 100%
@@ -122,7 +291,6 @@
         top 15px
         left 10px
     .headerContent
-      /*background-color #fff*/
       /*position fixed
       top 55px
       left 0*/
@@ -205,6 +373,11 @@
               width 34px
               height 2px
     .contentWrap
+      position absolute
+      /*top 142px*/
+      left 0px
+      right 0px
+      bottom 46px
       overflow hidden
       .content
         .homeContentWrap
@@ -216,4 +389,165 @@
         .new_exclusive
           &>img
             width 100%
+        .daily_berserk
+          .daily_title
+            overflow hidden
+            height 60px
+            line-height 60px
+            .tp
+              float left
+              width 105px
+              margin 9px 0
+              &>img
+                width 100%
+            .next
+              float left
+              margin 0 5px 0 10px
+              font-size 12px
+              text-align center
+            .time
+              float left
+              font-size 12px
+              &>span:nth-child(odd)
+                padding 2px
+                border 1px solid #ddd
+            .more
+              float right
+              width 70px
+              height 100%
+              a
+                box-sizing border-box
+                display inline-block
+                height 100%
+                padding-top 5px
+                &>img
+                  padding  5px 0
+                  height 40px
+          .food_list
+            height 130px
+            width 100%
+            margin-bottom 10px
+            .list
+              overflow hidden
+              height 100%
+              width 550px
+              &>li
+                float left
+                width 100px
+                text-align center
+                margin-right 10px
+                &>img
+                  /*height 100%*/
+                  width 85px
+                  margin-bottom 5px
+                & span
+                  color #f00
+                  font-size 14px
+                & p
+                  margin 5px
+                  color #999
+                  font-size 12px
+
+        .e_chong
+          &>img
+            width 100%
+        .e_guoji
+          overflow hidden
+          & img
+            float left
+            width 50%
+
+
+        .e_brand
+          .brand_title
+            box-sizing border-box
+            &>img
+              margin-left 10px
+              height 72px
+            &>a img
+              float right
+              margin 8px
+              height 55px
+          .brand_imgs
+            .img_list
+              & img
+                width 100%
+        .e_exp
+          .e_exp_title
+            box-sizing border-box
+            &>img
+              margin-left 10px
+              height 72px
+            &>a img
+              float right
+              margin 8px
+              height 55px
+        .e_video
+          .video_title
+            box-sizing border-box
+            &>img
+              margin-left 10px
+              height 72px
+            &>a img
+              float right
+              margin 8px
+              height 55px
+          .video_img
+            position relative
+            &>img
+              width 100%
+            & .play
+              display inline-block
+              width 20px
+              height 20px
+              position absolute
+              top 50%
+              left 50%
+              background-image url("../../pages/homePage/imgs/play.png")
+              background-size 20px
+              background-repeat no-repeat
+          .foo_text
+            padding 10px
+            font-size 12px
+            text-align center
+            &>.text1
+              height 19px
+              line-height 19px
+              color #333
+            &>.text2
+              height 19px
+              line-height 19px
+              color #999
+              &>.icon
+                display inline-block
+                width 10px
+                height 10px
+                background-image url("../../pages/homePage/imgs/view-black.png")
+                background-size 10px
+                background-repeat no-repeat
+        .textDiv
+          &>img
+            width 100%
+        .home_footer
+          height 86px
+          margin-top 15px
+          text-align center
+          .other
+            box-sizing border-box
+            height 42px
+            padding 15px 0 5px
+            font-size 14px
+            span
+              margin-right 10px
+              line-height 22px
+              color #f00
+              &>a
+                color #000
+          .copy
+            box-sizing border-box
+            padding 10px 0
+            height 44px
+            /*line-height 22px*/
+            font-size 12px
+
 </style>
