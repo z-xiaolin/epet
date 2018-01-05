@@ -1,6 +1,6 @@
 <template>
   <div class="headerWrap">
-    <div class="overflow" v-if="isShow">
+    <!--<div class="overflow" v-if="isShow">
       <img src="./img.jpg">
       <i class="closebtn_top" @click="closebtn"></i>
     </div>
@@ -22,7 +22,7 @@
       </div>
       <div class="header_nav">
         <ul class="nav_list">
-          <li class="firstLi"><a href="javascript:;">首页</a><i></i></li>
+          <li class="firstLi"><a href="##">首页</a><i></i></li>
           <li><a href="javascript:;">猫猫主粮</a></li>
           <li><a href="javascript:;">罐头超市</a></li>
           <li><a href="javascript:;">医疗保健</a></li>
@@ -32,21 +32,11 @@
         </ul>
       </div>
     </div>
-    <!--<div class="carousel">
-      <mt-swipe class="mint_swipe" :auto="2000">
-        <mt-swipe-item class="item"><img src="../carousel/imgs/carousel_1.jpg"></mt-swipe-item>
-        <mt-swipe-item class="item"><img src="../carousel/imgs/carousel_2.jpg"></mt-swipe-item>
-        <mt-swipe-item class="item"><img src="../carousel/imgs/carousel_3.jpg"></mt-swipe-item>
-        <mt-swipe-item class="item"><img src="../carousel/imgs/carousel_4.jpg"></mt-swipe-item>
-        <mt-swipe-item class="item"><img src="../carousel/imgs/carousel_5.jpg"></mt-swipe-item>
-        <mt-swipe-item class="item"><img src="../carousel/imgs/carousel_6.jpg"></mt-swipe-item>
-      </mt-swipe>
-    </div>-->
-    <carousel />
+    <carousel />-->
   </div>
 </template>
 <script>
-  import BScroll from "better-scroll"
+  /*import BScroll from "better-scroll"
   import carousel from "../../components/carousel/carousel.vue"
   export default{
     props: [],
@@ -70,10 +60,10 @@
     components:{
       carousel,
     }
-  }
+  }*/
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-  .headerWrap
+ /* .headerWrap
     .overflow img
       width 100%
       height 55px
@@ -96,7 +86,7 @@
         text-align center
         padding 8px 0
         margin 0 10px
-        /*box-sizing border-box*/
+        !*box-sizing border-box*!
         .theme
           float left
           position: relative
@@ -157,7 +147,7 @@
             color: #666
           .firstLi
             position relative
-            /*color #e73f85*/
+            !*color #e73f85*!
             &>a
               color #e73f85
             &>i
@@ -168,5 +158,5 @@
               background-color #e73f85
               border-radius 10px
               width 34px
-              height 2px
+              height 2px*/
 </style>
