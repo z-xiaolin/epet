@@ -210,36 +210,38 @@
       </div>
     </div>
 
-    <!--切换主题 -->
-    <div class="switch_type_warp">
-      <div class="switch_type" @click="switchType"></div>
-      <div class="change_type_mask" v-show="isShowMask">
-        <div class="mask">
-          <div class="main">
-            <p class="text1">CAT <b>▁</b></p>
-            <p class="text2">亲爱的小主</p>
-            <p class="text3">您即将进入猫猫站</p>
-            <ul class="type_list">
-              <li class="types dog">
-                <img src="./imgs/change-dog.png" alt="">
-                <p>狗狗站</p>
-              </li>
-              <li class="cat">
-                <img src="./imgs/change-cat1.png" alt="">
-                <p>猫猫站</p>
-                <b>▁</b>
-                <a href="javascript:;">即将进入</a>
-              </li>
-              <li class="types fish">
-                <img src="./imgs/change-fish.png" alt="">
-                <p>水族站</p>
-              </li>
-            </ul>
+    <div class="switch_type" @click="switchType"></div>
+    <!--切换主题遮罩层  -->
+    <transition name="scaleMask">
+      <div class="switch_type_warp">
+        <div class="change_type_mask" v-show="isShowMask">
+          <div class="mask">
+            <div class="main">
+              <p class="text1">CAT <b>▁</b></p>
+              <p class="text2">亲爱的小主</p>
+              <p class="text3">您即将进入猫猫站</p>
+              <ul class="type_list">
+                <li class="types dog">
+                  <img src="./imgs/change-dog.png" alt="">
+                  <p>狗狗站</p>
+                </li>
+                <li class="cat">
+                  <img src="./imgs/change-cat1.png" alt="">
+                  <p>猫猫站</p>
+                  <b>▁</b>
+                  <a href="javascript:;">即将进入</a>
+                </li>
+                <li class="types fish">
+                  <img src="./imgs/change-fish.png" alt="">
+                  <p>水族站</p>
+                </li>
+              </ul>
+            </div>
+            <p class="close_mask" @click="closeMask"></p>
           </div>
-          <p class="close_mask" @click="closeMask"></p>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
 
 </template>
@@ -256,10 +258,11 @@
         isShow:true,
 //        height:"478px"
         top:"142px",
-        isShowMask:true
+        isShowMask:false
       }
     },
     mounted (){
+//      this.
       let scrollX = new BScroll(".header_nav", {scrollX: true, click: true})
       let scrollX2 = new BScroll(".food_list", {scrollX: true, click: true})
       let scrollY = new BScroll(".contentWrap",{scrollY: true, click: true})
@@ -296,9 +299,8 @@
       // 切换主题
       switchType(){
         this.isShowMask = !this.isShowMask
-
       },
-      // 关闭切换主题
+      // 关闭切换主题遮罩层
       closeMask (){
         this.isShowMask = !this.isShowMask
       }
@@ -593,26 +595,29 @@
             /*line-height 22px*/
             font-size 12px
 
-
+    .switch_type
+      position fixed
+      bottom 130px
+      right 0px
+      width 40px
+      height 41px
+      background-size 80px
+      /*background-image url("./imgs/gocat.png")*/
+      background-size 100%
+      background-repeat no-repeat
+      animation switchType 1.5s infinite
     .switch_type_warp
-      .switch_type
-        position fixed
-        bottom 130px
-        right 0px
-        width 40px
-        height 41px
-        background-size 80px
-        background-image url("./imgs/gocat.png")
-        background-repeat no-repeat
+
       .change_type_mask
         z-index 100
         width 100%
         height 100%
         background-color #fff
         position fixed
-        top 110px
+        top 0px
         left 0px
         .mask
+          padding-top 110px
           .main
             .text1
               position relative
@@ -690,4 +695,16 @@
             background-size 23px 23px
             background-position center
             background-repeat no-repeat
+@keyframes switchType
+  from
+    background-image url("./imgs/gocat1.png")
+  to
+    background-image url("./imgs/gocat2.png")
+    /*background-position -41px 0*/
+
+    /*scaleMask-enter-active ,scaleMask-leave-active
+      transition: all 1s ease
+    scaleMask-enter ,scaleMask-leave-to
+      transform scale 0*/
+
 </style>

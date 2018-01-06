@@ -75,6 +75,10 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
+    ],
+    loaders: [
+      { test: /iview.src.*?js$/, loader: 'babel' },
+      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ }
     ]
   },
   node: {
