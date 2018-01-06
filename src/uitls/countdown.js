@@ -2,7 +2,7 @@
 export const showtime = function() {
     let time = []
     let nowtime = new Date(),
-      endtime = new Date("2018/1/5,21:50:00"),//设置结束时间
+      endtime = new Date("2018/1/6,21:55:00"),//设置结束时间
       lefttime = parseInt((endtime.getTime()-nowtime.getTime())/1000),
       d = Math.floor(lefttime/(60*60*24)),
       h = Math.floor(lefttime/(60*60)%24),

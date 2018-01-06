@@ -198,7 +198,6 @@
         <div class="textDiv">
           <img src="./imgs/text_img.jpg" alt="">
         </div>
-        <split />
         <div class="home_footer">
           <div class="other">
             <span>触屏版</span>
@@ -207,6 +206,37 @@
             <span><a href="##">联系我们</a></span>
           </div>
           <div class="copy">© wap.epet.com 版权：重庆易宠科技有限公司</div>
+        </div>
+      </div>
+    </div>
+
+    <!--切换主题 -->
+    <div class="switch_type_warp">
+      <div class="switch_type" @click="switchType"></div>
+      <div class="change_type_mask" v-show="isShowMask">
+        <div class="mask">
+          <div class="main">
+            <p class="text1">CAT <b>▁</b></p>
+            <p class="text2">亲爱的小主</p>
+            <p class="text3">您即将进入猫猫站</p>
+            <ul class="type_list">
+              <li class="types dog">
+                <img src="./imgs/change-dog.png" alt="">
+                <p>狗狗站</p>
+              </li>
+              <li class="cat">
+                <img src="./imgs/change-cat1.png" alt="">
+                <p>猫猫站</p>
+                <b>▁</b>
+                <a href="javascript:;">即将进入</a>
+              </li>
+              <li class="types fish">
+                <img src="./imgs/change-fish.png" alt="">
+                <p>水族站</p>
+              </li>
+            </ul>
+          </div>
+          <p class="close_mask" @click="closeMask"></p>
         </div>
       </div>
     </div>
@@ -226,6 +256,7 @@
         isShow:true,
 //        height:"478px"
         top:"142px",
+        isShowMask:true
       }
     },
     mounted (){
@@ -234,13 +265,15 @@
       let scrollY = new BScroll(".contentWrap",{scrollY: true, click: true})
     },
     methods: {
+      // 关闭广告
       closebtn (){
         this.isShow = !this.isShow
-//        let Height = document.documentElement.clientHeight
-//        this.height = (Height-87-46)+ "px"
+        /*let Height = document.documentElement.clientHeight
+        this.height = (Height-87-46)+ "px"*/
         this.top = "87px"
       },
       time(){
+        showtime()
         return showtime()
         /*let showtime = function() {
           let time = []
@@ -259,6 +292,15 @@
           return time
         }
         showtime()*/
+      },
+      // 切换主题
+      switchType(){
+        this.isShowMask = !this.isShowMask
+
+      },
+      // 关闭切换主题
+      closeMask (){
+        this.isShowMask = !this.isShowMask
       }
     },
     computed: {},
@@ -373,6 +415,7 @@
               width 34px
               height 2px
     .contentWrap
+      /*background-color #fff*/
       position absolute
       /*top 142px*/
       left 0px
@@ -550,4 +593,101 @@
             /*line-height 22px*/
             font-size 12px
 
+
+    .switch_type_warp
+      .switch_type
+        position fixed
+        bottom 130px
+        right 0px
+        width 40px
+        height 41px
+        background-size 80px
+        background-image url("./imgs/gocat.png")
+        background-repeat no-repeat
+      .change_type_mask
+        z-index 100
+        width 100%
+        height 100%
+        background-color #fff
+        position fixed
+        top 110px
+        left 0px
+        .mask
+          .main
+            .text1
+              position relative
+              font-size 16px
+              text-align center
+              color: #999
+              &>b
+                color #000
+                font-size 12px
+                width 100%
+                font-weight 400
+                text-align center
+                position absolute
+                left 0px
+                bottom -4px
+            .text2
+              font-size 16px
+              text-align center
+              margin 30px 0 5px
+              color #666
+            .text3
+              padding 6px
+              font-size 20px
+              text-align center
+              color #333
+            .type_list
+              overflow hidden
+              margin-top 35px
+              width 305px
+              padding-left 50px
+              .types
+                float left
+                width 25%
+                text-align center
+                margin-top 21%
+                &>img
+                  width 60px
+                &>p
+                  margin-top 5px
+                  font-size 12px
+                  color #999
+              .cat
+                position relative
+                float left
+                text-align center
+                color #e74186
+                width 40%
+                margin-top 14%
+                &>img
+                  width 80%
+                &>b
+                  width 100%
+                  position absolute
+                  top -58px
+                  left 0
+                  color #000
+                  text-align center
+                &>a
+                  display inline-block
+                  border-radius 30px
+                  padding 5px 16px
+                  margin-top 25px
+                  font-size 12px
+                  color #fff
+                  background-color #e74186
+
+          .close_mask
+            position fixed
+            bottom 0px
+            left 0
+            width 100%
+            height 60px
+            border-top 1px solid #e7e7e7
+            background-image url("./imgs/close2.png")
+            background-size 23px 23px
+            background-position center
+            background-repeat no-repeat
 </style>
