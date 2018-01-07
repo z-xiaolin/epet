@@ -21,7 +21,7 @@
     <div class="right">
       <div class="right_content">
         <div class="right_top">
-          <div class="title1"><span>热门分类</span></div>
+          <div class="title1"><span>热门分类</span><span class="icon"></span></div>
           <div class="top_list">
             <ul class="list">
               <li>
@@ -173,6 +173,16 @@
             margin-top 10px
             color #999
             font-size 12px
+            overflow hidden
+            & .icon
+              display inline-block
+              height 10px
+              width 46px
+              margin-top 5px
+              float right
+              background-image url("./cate_right_img.png")
+              background-repeat no-repeat
+              background-size 46px 10px
           .top_list
             .list
               overflow hidden

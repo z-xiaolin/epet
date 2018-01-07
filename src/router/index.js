@@ -8,6 +8,8 @@ const classifyList = () => import("../pages/classifyList/classifyList.vue")
 const brandList = () => import("../pages/brandList/brandList.vue")
 const shopCart = () => import("../pages/shopCart/shopCart.vue")
 const mine = () => import( "../pages/mine/mine.vue")
+const register = () => import( "../pages/register/register.vue")
+const login = () => import( "../pages/login/login.vue")
 
 Vue.use(VueRouter)
 
@@ -22,12 +24,14 @@ export default new VueRouter({
     // 首页
     {
       path:"/homePage",
-      component: homePage
+      component: homePage,
+      // meta: {keepAlive: true, isShow: true},
     },
     // 分类页
     {
       path:"/classify",
       component: classify,
+      // meta: {keepAlive: true, isShow: true},
       children:[
         {
           path:"",
@@ -51,7 +55,21 @@ export default new VueRouter({
     // 我的
     {
       path:"/mine",
-      component: mine
+      component: mine,
+      children:[
+        {
+          path:"",
+          redirect:"login"
+        },
+        {
+          path:"login",
+          component:login
+        },
+        {
+          path:"register",
+          component:register
+        }
+      ]
     },
   ]
 })

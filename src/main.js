@@ -7,6 +7,8 @@ import 'mint-ui/lib/style.css'
 
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
+Vue.component(Tabbar.name, Tabbar)
+Vue.component(TabItem.name, TabItem)
 
 new Vue({
   el: '#app',

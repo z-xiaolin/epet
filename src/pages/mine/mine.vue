@@ -1,10 +1,21 @@
 <template>
   <div>
-    mine 组件。。。
+    <!--<login />-->
+
+    <router-view />
+    <!--<router-link to="/mine/register">注册</router-link>-->
+    <!--<router-link to="/mine/login">登录</router-link>-->
   </div>
 </template>
 <script>
+//  import register from "../register/register.vue"
+  import login from "../login/login.vue"
   export default{
+    components:{
+      login,
+//      register,
+      login
+    },
     props: [],
     data () {
       return {}

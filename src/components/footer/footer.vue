@@ -1,38 +1,39 @@
 <template>
-  <div class="footernav">
+  <div>
     <div class="page">
       <router-view />
     </div>
 
-    <ul class="footernav_ul">
-      <li v-if="$route.path.indexOf('homePage') !== -1" @click="changePage('/homePage')">
-        <router-link to="/homePage"><i class="icon icon1"></i></router-link>
-      </li>
-      <li v-else>
-        <router-link to="/homePage"><i class="icon icon11"></i></router-link>
-      </li>
+    <div class="footernav">
+      <ul class="footernav_ul">
+        <li v-if="$route.path.indexOf('homePage') !== -1" @click="changePage('/homePage')">
+          <router-link to="/homePage"><i class="icon icon1"></i></router-link>
+        </li>
+        <li v-else>
+          <router-link to="/homePage"><i class="icon icon11"></i></router-link>
+        </li>
 
-      <li v-if="$route.path.indexOf('classify') !== -1" @click="changePage('/classify')">
-        <router-link to="/classify"><i class="icon icon2"></i></router-link>
-      </li>
-      <li v-else>
-        <router-link to="/classify"><i class="icon icon22"></i></router-link>
-      </li>
+        <li v-if="$route.path.indexOf('classify') !== -1" @click="changePage('/classify')">
+          <router-link to="/classify"><i class="icon icon2"></i></router-link>
+        </li>
+        <li v-else>
+          <router-link to="/classify"><i class="icon icon22"></i></router-link>
+        </li>
 
-      <li v-if="$route.path.indexOf('shopCart') !== -1" @click="changePage('/shopCart')">
-        <router-link to="/shopCart"><i class="icon icon3"></i></router-link>
-      </li>
-      <li v-else>
-        <router-link to="/shopCart"><i class="icon icon33"></i></router-link>
-      </li>
-      <li v-if="$route.path.indexOf('mine') !== -1" @click="changePage('/mine')">
-        <router-link to="/mine"><i class="icon icon4"></i></router-link>
-      </li>
-      <li v-else>
-        <router-link to="/mine"><i class="icon icon44"></i></router-link>
-      </li>
-    </ul>
-
+        <li v-if="$route.path.indexOf('shopCart') !== -1" @click="changePage('/shopCart')">
+          <router-link to="/shopCart"><i class="icon icon3"></i></router-link>
+        </li>
+        <li v-else>
+          <router-link to="/shopCart"><i class="icon icon33"></i></router-link>
+        </li>
+        <li v-if="$route.path.indexOf('mine') !== -1" @click="changePage('/mine')">
+          <router-link to="/mine"><i class="icon icon4"></i></router-link>
+        </li>
+        <li v-else>
+          <router-link to="/mine"><i class="icon icon44"></i></router-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -55,8 +56,10 @@
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
   .page
-    height
+    z-index 20
+    height 667px
   .footernav
+    z-index -3
     .footernav_ul
       height: 45px;
       line-height: 45px;

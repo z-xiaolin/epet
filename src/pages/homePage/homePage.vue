@@ -212,8 +212,8 @@
 
     <div class="switch_type" @click="switchType"></div>
     <!--切换主题遮罩层  -->
-    <transition name="scaleMask">
-      <div class="switch_type_warp">
+    <div class="switch_type_warp">
+      <transition name="scaleMask">
         <div class="change_type_mask" v-show="isShowMask">
           <div class="mask">
             <div class="main">
@@ -229,7 +229,7 @@
                   <img src="./imgs/change-cat1.png" alt="">
                   <p>猫猫站</p>
                   <b>▁</b>
-                  <a href="javascript:;">即将进入</a>
+                  <a href="http://localhost:8080/">即将进入</a>
                 </li>
                 <li class="types fish">
                   <img src="./imgs/change-fish.png" alt="">
@@ -240,8 +240,8 @@
             <p class="close_mask" @click="closeMask"></p>
           </div>
         </div>
-      </div>
-    </transition>
+      </transition>
+    </div>
   </div>
 
 </template>
@@ -601,13 +601,11 @@
       right 0px
       width 40px
       height 41px
-      background-size 80px
-      /*background-image url("./imgs/gocat.png")*/
-      background-size 100%
+      background-image url("./imgs/gocat.png")
+      background-size 200%
       background-repeat no-repeat
-      animation switchType 1.5s infinite
+      animation switchType 2s steps(2) infinite
     .switch_type_warp
-
       .change_type_mask
         z-index 100
         width 100%
@@ -616,6 +614,10 @@
         position fixed
         top 0px
         left 0px
+        &.scaleMask-enter-active, &.scaleMask-leave-active
+          transition: all .3s linear
+        &.scaleMask-enter, &.scaleMask-leave-to
+          transform scale(0)
         .mask
           padding-top 110px
           .main
@@ -697,14 +699,9 @@
             background-repeat no-repeat
 @keyframes switchType
   from
-    background-image url("./imgs/gocat1.png")
+    /*background-image url("./imgs/gocat1.png")*/
+    background-position -40px 0
   to
-    background-image url("./imgs/gocat2.png")
-    /*background-position -41px 0*/
-
-    /*scaleMask-enter-active ,scaleMask-leave-active
-      transition: all 1s ease
-    scaleMask-enter ,scaleMask-leave-to
-      transform scale 0*/
-
+    /*background-image url("./imgs/gocat2.png")*/
+    background-position 41.5px 0
 </style>

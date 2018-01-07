@@ -1,40 +1,52 @@
 <template>
-  <div class="classify_wrap">
-    <div class="header" ref="header">
-      <div class="tab tab1">
-        <a :class="{active:isShow}" href="#"  @click="changeClassify(isShow)"><span>分类</span></a>
-        <span class="line" v-if="isShow"></span>
+  <div>
+    <div class="classify_wrap" v-show="!showSearch">
+      <div class="header" ref="header">
+        <div class="tab tab1">
+          <router-link :class="{active:$route.path.indexOf('classifyList') !== -1}" to="/classify/classifyList">分类</router-link>
+          <!--<a :class="{active:isShow}" href="#"  @click="changeClassify(isShow)"><span>分类</span></a>-->
+          <span class="line" v-if="$route.path.indexOf('classifyList') !== -1"></span>
+        </div>
+        <div class="tab tab2">
+          <router-link :class="{active:$route.path.indexOf('brandList') !== -1}" to="/classify/brandList">品牌</router-link>
+          <!--<a :class="{active:!isShow}" href="#"  @click="changeClassify(!isShow)"><span>品牌</span></a>-->
+          <span class="line" v-if="$route.path.indexOf('brandList') !== -1"></span>
+        </div>
+        <div class="search">
+          <a href="#" @click="changeShow"><span class="icon_search"></span></a>
+        </div>
       </div>
-      <div class="tab tab2">
-        <a :class="{active:!isShow}" href="#"  @click="changeClassify(!isShow)"><span>品牌</span></a>
-        <span class="line" v-if="!isShow"></span>
-      </div>
+      <router-view />
     </div>
-    <!--<classifyList />-->
-    <router-view />
-    <router-link to="/classify/classifyList"></router-link>
+    <div class="search_mask" v-show="showSearch">
+      <search :closeSearch="closeSearch"/>
+    </div>
   </div>
 </template>
 <script>
   import BScroll from "better-scroll"
   import classifyList from "../classifyList/classifyList.vue"
+  import search from "../../components/search/search.vue"
   export default{
-    components:{classifyList,},
+    components:{classifyList, search},
     props: [],
     data () {
       return {
-        isShow: true
+        isShow: true,
+        showSearch:false
       }
     },
-    /*mounted(){
-      let scrollX = new BScroll(".left", {click:true, scrollX:true})
-      let scrollX2 = new BScroll(".right", {click:true, scrollX:true})
-    },*/
     methods: {
       changeClassify(TorF){
         if (!TorF){
           this.isShow = !this.isShow
         }
+      },
+      changeShow(){
+        this.showSearch = !this.showSearch
+      },
+      closeSearch(){
+        this.showSearch = !this.showSearch
       }
     },
     computed: {},
@@ -77,5 +89,17 @@
         text-align left
         &>.line
           left 58%
+      .search
+        position relative
+        & span
+          position absolute
+          top 0px
+          right 15px
+          display inline-block
+          width 20px
+          height 20px
+          background-repeat no-repeat
+          background-size 100%
+          background-image url("./search.png")
 
 </style>
