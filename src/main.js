@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import { Swipe, SwipeItem, Tabbar, TabItem} from 'mint-ui'
+import { Swipe, SwipeItem, Tabbar,
+  TabItem, } from 'mint-ui'
 
 import router from './router'
 import App from "./App.vue"

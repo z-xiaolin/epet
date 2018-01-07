@@ -128,7 +128,7 @@
         .icon4
           background-image url("./head_icon5.png")
       &.slide-entry-active, &.slide-leave-active
-        transition  0.5s linear
+        transition all 0.5s linear
       &.slide-entry, &.slide-leave-to
         height 0px
     .CartBox
