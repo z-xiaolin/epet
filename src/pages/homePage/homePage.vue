@@ -1,5 +1,6 @@
 <template>
   <div class="headerWrap">
+    <!--{{daily}}-->
     <div class="overflow" v-if="isShow">
       <img src="./imgs/img.jpg">
       <i class="closebtn_top" @click="closebtn"></i>
@@ -22,45 +23,34 @@
       </div>
       <div class="header_nav">
         <ul class="nav_list">
-          <li class="firstLi"><a href="##">首页</a><i></i></li>
-          <li><a href="javascript:;">猫猫主粮</a></li>
-          <li><a href="javascript:;">罐头超市</a></li>
-          <li><a href="javascript:;">医疗保健</a></li>
-          <li><a href="javascript:;">猫砂</a></li>
-          <li><a href="javascript:;">美容香波</a></li>
-          <li><a href="javascript:;">零食玩具</a></li>
+          <li v-for="(menu, index) in menus" :key="index">
+            <a href="javascript:;">{{menu.menu_name}}</a>
+            <i></i>
+          </li>
         </ul>
       </div>
     </div>
 
-    <!--<div class="contentWrap" :style="{height:height}">-->
     <div class="contentWrap" :style="{top: top}">
       <div class="content">
-        <carousel />
+        <carousel v-if="datas[0]" :imgs="datas[0].value"/>
         <div class="homeContentWrap">
-          <div class="content_nav_list">
-              <img src="./imgs/e_1.jpg" alt="">
-              <img src="./imgs/e_2.jpg" alt="">
-              <img src="./imgs/e_3.jpg" alt="">
-              <img src="./imgs/e_4.jpg" alt="">
-              <img src="./imgs/e_5.jpg" alt="">
-              <img src="./imgs/e_6.jpg" alt="">
-              <img src="./imgs/e_7.jpg" alt="">
-              <img src="./imgs/e_8.jpg" alt="">
-              <img src="./imgs/e_9.jpg" alt="">
-              <img src="./imgs/e_10.jpg" alt="">
+          <div class="content_nav_list" v-if="datas[2]">
+            <a :href="menu.target.param" v-for="(menu, index) in datas[2].menus" :key="index">
+              <img :src="menu.image" alt="">
+            </a>
           </div>
         </div>
         <split />
-        <div class="new_exclusive">
-          <img src="./imgs/new_exclusive.gif" alt="">
+        <div class="new_exclusive" v-if="new_exclusive" v-for="(imgs, index) in new_exclusive" :key="index">
+          <img :src="imgs.image" alt="">
         </div>
         <div class="daily_berserk">
-          <div class="daily_title">
+          <div class="daily_title" v-if="daily['surprise_icon']">
             <div class="tp">
-              <img src="./imgs/suprice.png">
+              <img :src="daily['surprise_icon']['image']">
             </div>
-            <div class="next">距离下一场&nbsp;</div>
+            <div class="next">{{daily.title}}&nbsp;</div>
             <div class="time">
               <span>{{time()[0]}}</span>
               <span>:</span>
@@ -68,135 +58,88 @@
               <span>:</span>
               <span>{{time()[2]}}</span>
             </div>
-            <div class="more">
+            <div class="more" v-if="daily.right_image">
               <a href="###">
-                <img src="./imgs/more.png">
+                <img :src="daily.right_image.image">
               </a>
             </div>
           </div>
           <div class="food_list">
             <ul class="list">
-              <li>
-                <img src="./imgs/hour2_1.jpg">
+              <li v-for="(imgs, index) in daily['goods']" :key="index">
+                <img :src="imgs.image.image">
                 <div>
-                  <span>￥</span><span>1.25</span>
-                  <p>省￥11.25</p>
-                </div>
-              </li>
-              <li>
-                <img src="./imgs/hour2_2.jpg">
-                <div>
-                  <span>￥</span><span>2.20</span>
-                  <p>省￥11.25</p>
-                </div>
-              </li>
-              <li>
-                <img src="./imgs/hour2_3.jpg">
-                <div>
-                  <span>￥</span><span>1.25</span>
-                  <p>省￥11.25</p>
-                </div>
-              </li>
-              <li>
-                <img src="./imgs/hour2_4.jpg">
-                <div>
-                  <span>￥</span><span>2.25</span>
-                  <p>省￥11.25</p>
-                </div>
-              </li>
-              <li>
-                <img src="./imgs/hour2_5.jpg">
-                <div>
-                  <span>￥</span><span>15.20</span>
-                  <p>省￥11.25</p>
+                  <span>￥</span><span>{{imgs.sale_price}}</span>
+                  <p>{{imgs.little_price}}</p>
                 </div>
               </li>
             </ul>
           </div>
         </div>
         <split />
-        <div class="e_chong">
-          <img src="./imgs/e_chong.jpg">
+        <div class="e_chong" v-if="datas[7]">
+          <a :href="datas[7].content_images[0][0].target.param">
+            <img :src="datas[7].content_images[0][0].image">
+          </a>
         </div>
         <split />
-        <div class="e_guoji">
-          <div><img src="./imgs/e_guoji_1.jpg"></div>
-          <p><img src="./imgs/e_guoji_2.jpg"></p>
-          <p><img src="./imgs/e_guoji_3.jpg"></p>
+        <div class="e_guoji" v-if="datas[9]">
+          <div>
+            <a :href="datas[9].content_images[0][0].target.param">
+              <img :src="datas[9].content_images[0][0].image">
+            </a>
+          </div>
+          <p>
+            <a :href="datas[9].content_images[1][0].target.param">
+              <img :src="datas[9].content_images[1][0].image">
+            </a>
+          </p>
+          <p>
+            <a :href="datas[9].content_images[1][1].target.param">
+              <img :src="datas[9].content_images[1][1].image">
+            </a>
+          </p>
         </div>
         <split />
-        <smallVideo />
-        <!--<smallVideo :title_src="../../pages/homePage/imgs/e_video_small.jpg"
-                    :title_more_src="../../pages/homePage/imgs/more2.jpg"
-                    :video_img_src="../../pages/homePage/imgs/e_video.jpg"
-                    :text="PETSTAGES&nbsp;草皮镜面轨道球&nbsp;释放爱玩天性"
-                    :num="23291" :time="01:36"/>-->
+        <smallVideo v-if="datas[11]" :title="datas[11].value" :video="datas[12].value"/>
         <split />
-        <div class="e_brand">
+        <div class="e_brand" v-if="datas[14]">
           <div class="brand_title">
-            <img src="./imgs/brand_sell.jpg" alt="">
-            <a href=""><img src="./imgs/more2.jpg" alt=""></a>
+            <a class="a1" :href="datas[14].value.left.img.target.param">
+              <img :src="datas[14].value.left.img.image" alt="">
+            </a>
+            <a class="a2" :href="datas[14].value.right.img.target.param">
+              <img :src="datas[11].value.right.img.image" alt="">
+            </a>
           </div>
           <div class="brand_imgs">
             <ul class="img_list">
-              <li><img src="./imgs/p_1.jpg" alt=""><split /></li>
-              <li><img src="./imgs/p_2.jpg" alt=""><split /></li>
-              <li><img src="./imgs/p_3.jpg" alt=""></li>
+              <li v-if="imgs.content_images[0] && imgs.content_images[0][0].target" v-for="(imgs, index) in brandImgs" :key="index">
+                <a :href="imgs.content_images[0][0].target.param">
+                  <img :src="imgs.content_images[0][0].image" alt="">
+                </a>
+                <split />
+              </li>
             </ul>
           </div>
         </div>
-        <split />
-        <div class="e_exp">
-          <div class="e_exp_title">
-            <img src="./imgs/exp.jpg" alt="">
-            <a href=""><img src="./imgs/more2.jpg" alt=""></a>
+        <div class="e_exp" v-if="aaa">
+          <div class="e_exp_title" v-if="datas[29].value && datas[29].value.left">
+            <a class="left" :href="datas[29].value.left.img.target.param">
+              <img :src="datas[29].value.left.img.image" alt="">
+            </a>
+            <a class="right" :href="datas[29].value.right.img.target.param" v-if="datas[29].value.right">
+              <img :src="datas[29].value.right.img.image">
+            </a>
           </div>
-          <carousel />
+          <carousel v-if="datas[30]" :imgs="datas[30].value"/>
         </div>
         <split />
-        <!--<smallVideo />-->
-        <div class="e_video">
-          <div class="video_title">
-            <img src="../../pages/homePage/imgs/lovely_pet.jpg" alt="">
-            <a href=""><img src="../../pages/homePage/imgs/more2.jpg" alt=""></a>
-          </div>
-          <div class="video_img">
-            <img src="../../pages/homePage/imgs/pet_img.jpg" alt="">
-            <span class="play"></span>
-          </div>
-          <div class="foo_text">
-            <p class="text1">第2期-猫啪啪啪的时候爽吗？</p>
-            <p class="text2">
-              <span class="icon"></span>
-              <span>27819</span>
-              <span> | </span>
-              <span>02:36</span>
-            </p>
-          </div>
-        </div>
+        <smallVideo v-if="datas[32] && datas[33]" :title="datas[32].value" :video="datas[33].value"/>
         <split />
-        <div class="e_video">
-          <div class="video_title">
-            <img src="../../pages/homePage/imgs/theatre.jpg" alt="">
-            <a href=""><img src="../../pages/homePage/imgs/more2.jpg" alt=""></a>
-          </div>
-          <div class="video_img">
-            <img src="../../pages/homePage/imgs/theatre_img.png" alt="">
-            <span class="play"></span>
-          </div>
-          <div class="foo_text">
-            <p class="text1">E宠内部禁播视频——设计师篇</p>
-            <p class="text2">
-              <span class="icon"></span>
-              <span>8863</span>
-              <span> | </span>
-              <span>00:36</span>
-            </p>
-          </div>
-        </div>
-        <split />
-        <div class="textDiv">
-          <img src="./imgs/text_img.jpg" alt="">
+        <smallVideo v-if="datas[35] && datas[36]" :title="datas[35].value" :video="datas[36].value"/>
+        <div class="textDiv" v-if="datas[38]">
+          <img :src="datas[38].content_images[0][0].image" alt="">
         </div>
         <div class="home_footer">
           <div class="other">
@@ -251,21 +194,23 @@
   import split from "../../components/split/split.vue"
   import smallVideo from "../../components/small_video/smallVideo.vue"
   import {showtime} from "../../uitls/countdown"
+  import {mapState} from "vuex"
   export default{
     props: [],
     data () {
       return {
         isShow:true,
-//        height:"478px"
         top:"142px",
         isShowMask:false
       }
     },
     mounted (){
-//      this.
-      let scrollX = new BScroll(".header_nav", {scrollX: true, click: true})
-      let scrollX2 = new BScroll(".food_list", {scrollX: true, click: true})
-      let scrollY = new BScroll(".contentWrap",{scrollY: true, click: true})
+      this.$store.dispatch("requestHomePage")
+      this.$store.dispatch("requestHomeDailyActive")
+
+      this.scrollX = new BScroll(".header_nav", {scrollX: true, click: true})
+      this.scrollX2 = new BScroll(".food_list", {scrollX: true, click: true})
+      this.scrollY = new BScroll(".contentWrap",{scrollY: true, click: true})
     },
     methods: {
       // 关闭广告
@@ -303,9 +248,36 @@
       // 关闭切换主题遮罩层
       closeMask (){
         this.isShowMask = !this.isShowMask
-      }
+      },
     },
-    computed: {},
+    computed: {
+      ...mapState(['menus',"datas", "daily", "new_exclusive"]),
+      // 品牌
+      brandImgs (){
+        let imgs = []
+        imgs = this.datas.filter((data, index)=> {
+          return index >= 15 && index <= 27 && index % 2 == 1
+        })
+        return imgs
+      },
+      aaa(){
+        return this.datas[29]
+      },
+     /* bbb(){
+//        let arr = Object.keys(this.daily).sort()
+        console.log(Object.keys(this.daily).sort())
+        return arr
+      }*/
+    },
+    watch:{
+     /* menus(val, oldVal){
+        this.scrollX.refresh()
+        this.scrollX2.refresh()
+      },
+      datas(){
+        this.scrollY.refresh()
+      }*/
+    },
     components:{
       carousel,
       split,
@@ -403,7 +375,7 @@
             text-align center
             font-size 14px
             color: #666
-          .firstLi
+          li:first-child
             position relative
             &>a
               color #e73f85
@@ -428,7 +400,7 @@
         .homeContentWrap
           .content_nav_list
             overflow hidden
-            &>img
+            & img
               float left
               width 20%
         .new_exclusive
@@ -494,7 +466,7 @@
                   font-size 12px
 
         .e_chong
-          &>img
+          & img
             width 100%
         .e_guoji
           overflow hidden
@@ -506,10 +478,10 @@
         .e_brand
           .brand_title
             box-sizing border-box
-            &>img
+            & .a1 img
               margin-left 10px
               height 72px
-            &>a img
+            & .a2 img
               float right
               margin 8px
               height 55px
@@ -520,10 +492,10 @@
         .e_exp
           .e_exp_title
             box-sizing border-box
-            &>img
+            & .left img
               margin-left 10px
               height 72px
-            &>a img
+            & .right img
               float right
               margin 8px
               height 55px
@@ -539,7 +511,7 @@
               height 55px
           .video_img
             position relative
-            &>img
+            & img
               width 100%
             & .play
               display inline-block
@@ -564,12 +536,13 @@
               line-height 19px
               color #999
               &>.icon
-                display inline-block
-                width 10px
-                height 10px
-                background-image url("../../pages/homePage/imgs/view-black.png")
-                background-size 10px
-                background-repeat no-repeat
+                & img
+                  display inline-block
+                  width 10px
+                  height 10px
+                  /*background-image url("../../pages/homePage/imgs/view-black.png")*/
+                  background-size 10px
+                  background-repeat no-repeat
         .textDiv
           &>img
             width 100%

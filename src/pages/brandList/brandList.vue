@@ -2,6 +2,7 @@
   <div class="brand">
     <div class="brand-list">
       <div class="brand_type">
+        {{BrandList}}
         <div class="title"><span>—— 推荐品牌 ——</span></div>
         <div class="brandList">
           <ul class="list">
@@ -73,16 +74,20 @@
 </template>
 <script>
   import BScroll from "better-scroll"
+  import {mapState} from "vuex"
   export default{
     props: [],
     data () {
       return {}
     },
     mounted(){
+      this.$store.dispatch("requestGoodsList")
       let scrollY = new BScroll(".brand", {click:true, scrollX:true})
     },
     methods: {},
-    computed: {}
+    computed: {
+      ...mapState(['BrandList'])
+    }
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">

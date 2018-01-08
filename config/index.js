@@ -10,12 +10,60 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+
+    proxyTable: {
+      // 代理发送 ajax跨域请求
+      '/home': {
+        /* 首页地址 */
+        target: 'https://mallcdn.api.epet.com/v3/index/main.html?pet_type=cat&version=358&is_single=0&system=wap&isWeb=1',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/home': '/'
+        }
+      },
+      /* 首页每日疯抢 */
+      '/daily': {
+        // 每日疯抢地址
+        target: 'https://mall.api.epet.com/v3/index/main.html?do=GetDynamicV315&pet_type=cat&version=358&menu_param=1&system=wap&isWeb=1&_=1515413872140',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/daily': '/'
+        }
+      },
+      /* 分类 - 分类 - 主分类(左侧列表) */
+      '/classify': {
+        // 主分类(左侧列表)
+        target: 'https://mallcdn.api.epet.com/v3/goods/category/main.html?pet_type=cat&system=wap&isWeb=1&version=303&_=1515430918496',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/classify': '/'
+        }
+      },
+      /* 分类 - 分类 - 单个分类(右侧对应列表)  */
+      '/cateList': {
+        // 1. 单个分类(右侧对应列表)
+        target: 'https://mallcdn.api.epet.com/v3/goods/category/main.html',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/cateList': '/'
+        }
+      },
+      /* 分类 - 品牌  */
+      '/brand': {
+        // 品牌 列表
+        target: 'https://mallcdn.api.epet.com/v3/brand/list/main.html?pet_type=cat&system=wap&isWeb=1&version=303',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/brand': '/'
+        }
+      },
+
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-

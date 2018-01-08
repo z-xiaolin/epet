@@ -2,108 +2,81 @@
   <div class="tab1_content">
     <div class="left">
       <ul class="list">
-        <li class="active"><a href="#">为您推荐</a></li>
-        <li><a href="#">猫咪主粮</a></li>
-        <li><a href="#">猫咪零食</a></li>
-        <li><a href="#">猫咪日用</a></li>
-        <li><a href="#">猫咪玩具</a></li>
-        <li><a href="#">猫咪保健</a></li>
-        <li><a href="#">猫咪医疗</a></li>
-        <li><a href="#">猫咪出行</a></li>
-        <li><a href="#">猫咪装扮</a></li>
-        <li><a href="#">猫咪美容</a></li>
-        <li><a href="#">猫咪香波</a></li>
-        <li><a href="#">猫咪周边</a></li>
-        <li><a href="#">猫咪定制</a></li>
-        <li><a href="#">猫咪书籍</a></li>
+        <li v-for="(Category, index) in Categorys" :key="index"
+            :cateId="Category.cateid" @click="changeKind($event)">
+          <span>{{Category.name}}</span>
+        </li>
       </ul>
     </div>
+
     <div class="right">
       <div class="right_content">
-        <div class="right_top">
-          <div class="title1"><span>热门分类</span><span class="icon"></span></div>
-          <div class="top_list">
-            <ul class="list">
-              <li>
-                <a href="#">
-                  <img src="../../pages/classify/hour2_1.jpg" alt="">
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="../../pages/classify/hour2_1.jpg" alt="">
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="../../pages/classify/hour2_1.jpg" alt="">
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="../../pages/classify/hour2_1.jpg" alt="">
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="../../pages/classify/hour2_1.jpg" alt="">
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="../../pages/classify/hour2_1.jpg" alt="">
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-            </ul>
+        <div  v-for="(GoodsType, index) in GoodsList.cate_list" :key="index">
+          <div class="right_top">
+            <div class="title1" v-if="GoodsType.type == 0">
+              <span>{{GoodsType.title}}</span>
+              <span class="icon" v-if="GoodsType['rigth_img']">
+                <img :src="GoodsType['rigth_img'].image" alt="">
+              </span>
+            </div>
+            <div class="top_list" v-if="GoodsType.type == 0">
+              <ul class="list" >
+                <li v-for="(kind, index) in GoodsType.list" :key="index">
+                  <a href="#">
+                    <img :src="kind.photo" alt="">
+                    <p>{{kind.name}}</p>
+                  </a>
+                </li>
+                <!--<li>
+                  <a href="#">
+                    <img src="../../pages/classify/hour2_1.jpg" alt="">
+                    <p>进口猫粮</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../pages/classify/hour2_1.jpg" alt="">
+                    <p>进口猫粮</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../pages/classify/hour2_1.jpg" alt="">
+                    <p>进口猫粮</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../pages/classify/hour2_1.jpg" alt="">
+                    <p>进口猫粮</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../../pages/classify/hour2_1.jpg" alt="">
+                    <p>进口猫粮</p>
+                  </a>
+                </li>-->
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="right_bottom">
-          <div class="title2"><span>热门品牌</span></div>
-          <div class="bottom_list">
-            <ul class="list">
-              <li>
-                <a href="#">
-                  <div class="imgDiv"><img src="../../pages/classify/carousel_4.jpg" alt=""></div>
-                  <p>美士</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="imgDiv"><img src="../../pages/classify/carousel_4.jpg" alt=""></div>
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="imgDiv"><img src="../../pages/classify/carousel_4.jpg" alt=""></div>
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="imgDiv"><img src="../../pages/classify/carousel_4.jpg" alt=""></div>
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="imgDiv"><img src="../../pages/classify/carousel_4.jpg" alt=""></div>
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="imgDiv"><img src="../../pages/classify/carousel_4.jpg" alt=""></div>
-                  <p>进口猫粮</p>
-                </a>
-              </li>
-            </ul>
+
+          <div class="right_bottom">
+            <div class="title2" v-if="GoodsType.type == 2">
+              <span>{{GoodsType.title}}</span>
+            </div>
+            <div class="bottom_list" v-if="GoodsType.type == 2">
+              <ul class="list" >
+                <li v-for="(brand, index) in GoodsType.list" :key="index">
+                  <a href="#">
+                    <div class="imgDiv">
+                      <img :src="brand.logo" alt="">
+                    </div>
+                    <p>{{brand.name}}</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -112,14 +85,28 @@
 </template>
 <script>
   import BScroll from "better-scroll"
+  import {mapState } from "vuex"
   export default{
     props: [],
     data () {
       return {
-        isShow: true
+        isShow: true,
       }
     },
     mounted(){
+      // 左侧列表 请求
+      this.$store.dispatch("requestClassify" )
+
+      // 右侧列表 初始化显示 请求参数
+
+      let obj = {
+        do: "getChildren",
+        owner: "88888",
+        pet_type: "cat"
+      }
+      // 右侧列表 初始化 请求
+      this.$store.dispatch("requestGoodsList", obj)
+
       let scrollX = new BScroll(".left", {click:true, scrollX:true})
       let scrollX2 = new BScroll(".right", {click:true, scrollX:true})
     },
@@ -128,9 +115,23 @@
         if (!TorF){
           this.isShow = !this.isShow
         }
-      }
+      },
+      // 左侧点击事件，发送相应的请求
+      changeKind (event) {
+        let cateId = event.target.getAttribute('cateId')
+        console.log(cateId)
+
+        let obj = {
+          do: "getChildren",
+          owner: cateId,
+          pet_type: "cat"
+        }
+        this.$store.dispatch("requestGoodsList", obj)
+      },
     },
-    computed: {},
+    computed: {
+      ...mapState(['Categorys', 'GoodsList'])
+    },
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
@@ -152,8 +153,11 @@
           width: 70px;
           height: 50px;
           font-size: 13px;
-          &>a
+          & span
             color black
+        & li:first-child
+          & span
+            color deeppink
         .active
           background-color #f3f4f5
         .active a
@@ -174,13 +178,13 @@
             color #999
             font-size 12px
             overflow hidden
-            & .icon
+            & img
               display inline-block
               height 10px
               width 46px
               margin-top 5px
               float right
-              background-image url("./cate_right_img.png")
+              /*background-image url("./cate_right_img.png")*/
               background-repeat no-repeat
               background-size 46px 10px
           .top_list

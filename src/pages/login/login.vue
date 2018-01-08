@@ -31,7 +31,7 @@
             <input type="passward" placeholder="输入密码">
           </div>
           <div class="forget">
-            <a href="javascript:;">忘记密码？</a>
+            <a href="https://wap.epet.com/login.html?do=findpassword">忘记密码？</a>
           </div>
         </form>
 
@@ -59,7 +59,7 @@
           </div>
         </form>
       </div>
-      <div class="login_btn">
+      <div class="login_btn" @click="toUserCenter">
         <input type="submit" value="登   录">
       </div>
     </div>
@@ -92,6 +92,11 @@
       changeLoginType(){
         this.isShow = !this.isShow
       },
+      toUserCenter(){
+        // 判断输入用户名和密码是否正确
+
+        //
+      }
     },
     computed: {}
   }

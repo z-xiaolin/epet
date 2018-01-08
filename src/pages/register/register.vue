@@ -44,7 +44,7 @@
         </li>
       </ul>
       <!--<input class="btn" @click="nextStep" value="下一步" type="button">-->
-      <input ref="next2" class="btn" value="下一步" type="button" disabled
+      <input ref="next2" class="btn" value="下一步" type="button"
              :class="{active:showOrhide}" @click="nextStep1" >
     </div>
     </transition>
@@ -76,11 +76,13 @@
 
         // 注册成功后的提示
         Toast({
-          message: '提示',
-          position: 'bottom',
-          duration: 5000
+          message: '注册成功！',
+          duration: 1000
         })
         // 跳转到 登录页面
+        setTimeout(()=>{
+          window.location.href = "http://localhost:8080/#/mine/login"
+        },1000)
       }
     },
     computed: {

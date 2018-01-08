@@ -1,6 +1,10 @@
 export default {
-  homePage:{},
-  brandSort:{},
-  brandAll:{},
-  hotCate:{},
+  menus:[],
+  datas:[],
+  new_exclusive:[],
+  daily:[],
+  Categorys:[],
+  GoodsList:[],
+  BrandList:[],
+
 }

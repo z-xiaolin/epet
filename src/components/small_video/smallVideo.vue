@@ -1,47 +1,31 @@
 <template>
   <div class="e_video">
-    <div class="video_title">
-      <img src="../../pages/homePage/imgs/e_video_small.jpg" alt="">
-      <a href=""><img src="../../pages/homePage/imgs/more2.jpg" alt=""></a>
+    <div class="video_title" v-if="title">
+      <img :src="title.left.img.image"  alt="">
+      <a :href="video[0].share_target.param.url"><img :src="title.right.img.image" alt=""></a>
     </div>
-    <div class="video_img">
-      <img src="../../pages/homePage/imgs/e_video.jpg" alt="">
-      <span class="play"></span>
+    <div class="video_img" v-if="video">
+      <a :href="video[0].link">
+        <img :src="video[0].cover.image" alt="">
+        <span class="play"></span>
+      </a>
     </div>
-    <div class="foo_text">
-      <p class="text1">PETSTAGES 草皮镜面轨道球 释放爱玩天性</p>
+    <div class="foo_text" v-if="video">
+      <p class="text1">{{video[0].title}}</p>
       <p class="text2">
-        <span class="icon"></span>
-        <span>23291</span>
+        <span class="icon">
+          <img :src="video[0].visit_img.image" alt="">
+        </span>
+        <span>{{video[0].visit}}</span>
         <span> | </span>
-        <span>01:36</span>
+        <span>{{video[0].time}}</span>
       </p>
     </div>
   </div>
-
-  <!--<div class="e_video">
-    <div class="video_title">
-      <img :src=title_src>
-      <a href=""><img :src=title_more_src alt=""></a>
-    </div>
-    <div class="video_img">
-      <img :src=video_img_src alt="">
-      <span class="play"></span>
-    </div>
-    <div class="foo_text">
-      <p class="text1">{{text}}</p>
-      <p class="text2">
-        <span class="icon"></span>
-        <span>{{num}}</span>
-        <span> | </span>
-        <span>{{time}}</span>
-      </p>
-    </div>
-  </div>-->
 </template>
 <script>
   export default{
-    props: ["title_src","title_more_src","video_img_src","text","num","time"],
+    props: ["title","video"],
     data () {
       return {}
     },
@@ -90,7 +74,7 @@
           display inline-block
           width 10px
           height 10px
-          background-image url("../../pages/homePage/imgs/view-black.png")
+          /*background-image url("../../pages/homePage/imgs/view-black.png")*/
           background-size 10px
           background-repeat no-repeat
 </style>

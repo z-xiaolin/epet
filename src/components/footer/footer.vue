@@ -48,7 +48,7 @@
     },
     methods: {
       changePage (path){
-       this.$router.replace(path)
+//       this.$router.replace(path)
       }
     },
     computed: {},

@@ -4,7 +4,6 @@
       <div class="header" ref="header">
         <div class="tab tab1">
           <router-link :class="{active:$route.path.indexOf('classifyList') !== -1}" to="/classify/classifyList">分类</router-link>
-          <!--<a :class="{active:isShow}" href="#"  @click="changeClassify(isShow)"><span>分类</span></a>-->
           <span class="line" v-if="$route.path.indexOf('classifyList') !== -1"></span>
         </div>
         <div class="tab tab2">

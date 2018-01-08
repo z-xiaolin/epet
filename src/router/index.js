@@ -10,6 +10,7 @@ const shopCart = () => import("../pages/shopCart/shopCart.vue")
 const mine = () => import( "../pages/mine/mine.vue")
 const register = () => import( "../pages/register/register.vue")
 const login = () => import( "../pages/login/login.vue")
+const userCenter = () => import( "../pages/userCenter/userCenter.vue")
 
 Vue.use(VueRouter)
 
@@ -68,6 +69,10 @@ export default new VueRouter({
         {
           path:"register",
           component:register
+        },
+        {
+          path:"userCenter",
+          component:userCenter
         }
       ]
     },
