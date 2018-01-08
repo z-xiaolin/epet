@@ -5,6 +5,6 @@ export default {
   daily:[],
   Categorys:[],
   GoodsList:[],
-  BrandList:[],
+  GoodsList:[],
 
 }

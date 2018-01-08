@@ -1,66 +1,19 @@
 <template>
   <div class="brand">
     <div class="brand-list">
-      <div class="brand_type">
-        {{BrandList}}
-        <div class="title"><span>—— 推荐品牌 ——</span></div>
-        <div class="brandList">
-          <ul class="list">
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-          </ul>
+      <div class="brand_type" v-for="(brandItem, index) in BrandList.brand" :key="index">
+        <div class="title">
+          <span>—— {{brandItem.title}} ——</span>
         </div>
-      </div>
-      <div class="brand_type">
-        <div class="title"><span>—— 推荐品牌 ——</span></div>
         <div class="brandList">
           <ul class="list">
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
-            <li><a href="#"><img src="./brand.jpg" alt="">
-              <p class="p1">拉夫威尔</p><p class="p2">美国</p>
-            </a></li>
+            <li v-for="(item, index) in brandItem.list" :key="index">
+              <a href="#">
+                <img :src="item.logo" alt="">
+                <p class="p1">{{item.nanme}}</p>
+                <p class="p2">{{item.address}}</p>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

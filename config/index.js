@@ -51,7 +51,7 @@ module.exports = {
       /* 分类 - 品牌  */
       '/brand': {
         // 品牌 列表
-        target: 'https://mallcdn.api.epet.com/v3/brand/list/main.html?pet_type=cat&system=wap&isWeb=1&version=303',
+        target: 'https://mallcdn.api.epet.com/v3/brand/list/main.html?pet_type=cat&system=wap&isWeb=1&version=303&_=1515446286081',
         changeOrigin: true,
         pathRewrite: {
           '^/brand': '/'

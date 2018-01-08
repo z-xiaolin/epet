@@ -51,7 +51,7 @@ export default {
       // console.log(GoodsList)
       commit(GOODS_LIST, {GoodsList})
 
-      cb && cb()
+      // cb && cb()
     }
   },
 
@@ -59,11 +59,11 @@ export default {
     const BrandList = await requestBrandList()
     // console.log(BrandList)
     if(BrandList.code === "succeed") {
-      let BrandList = BrandList.brand  // []
+      // let BrandList = BrandList.brand  // []
       // console.log(GoodsList)
       commit(BRAND_LIST, {BrandList})
 
-      cb && cb()
+      // cb && cb()
     }
   },
 }

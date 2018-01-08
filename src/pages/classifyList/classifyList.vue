@@ -10,6 +10,7 @@
     </div>
 
     <div class="right">
+      <!--{{GoodsList}}-->
       <div class="right_content">
         <div  v-for="(GoodsType, index) in GoodsList.cate_list" :key="index">
           <div class="right_top">
